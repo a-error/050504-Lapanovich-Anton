@@ -1,39 +1,71 @@
 #include <stdio.h>
 #include <locale.h>
+#include <malloc.h>
+
 
 int main() {
-		setlocale(LC_ALL, "Russian");
-	int i, j, k, row1, row2, col1, col2, a[10][10], b[10][10], c[10][10] = { 0 };
-	row1 = row2 = col1 = col2 = 0;
 
-	do {
-		printf_s("Введите количество строк и столбцов первой матрицы: ");
-		    scanf_s("%d%d", &row1, &col1);
-		printf_s("Введите количество строк и столбцов второй матрицы: ");
-		    scanf_s("%d%d", &row2, &col2);
-		system("cls");
-	} 
-	while ((col1 != row2) || (row1 > 10) || (row2 > 10) || (col1 > 10) || (col2 > 10)); // проверка возможности умножения, допустимого значения строк и столбцов
-	    printf_s("Введите значения элементов первой матрицы: ");
+	setlocale(LC_ALL, "Russian");
+	int** A, ** B, ** C;
+	int i, j, k, row1, row2, col1, col2;
+error:
+    printf("Задайте количество строк и столбцов первой матрицы: ");
+    scanf_s("%d%d", &row1, &col1);
+    printf("Задайте количество строк и столбцов второй матрицы: ");
+    scanf_s("%d%d", &row2, &col2);
+	system("cls");
 
-	for (i = 0; i < row1; i++) {
-		for (j = 0; j < col1; j++) scanf_s("%d", &a[i][j]); // заполнение зн. эл. 1-ой матрицы
+	if (col1 != row2) {		// проверка возможности умножения
+		printf("Умножение невозможно! Задайте другие значения.\n");
+
+		goto error;
 	}
-	    printf_s("Введите значения элементов второй матрицы: ");
 
-	for (i = 0; i < row2; i++) {
-		for (j = 0; j < col2; j++) scanf_s("%d", &b[i][j]); // заполнение зн. эл. 2-ой матрицы
+	else if ((row1 <= 0) || (row2 <= 0) || (col1 <= 0) || (col2 <= 0)) {	// проверка допустимых значений размеров матрицы
+		printf("Размеры матрицы должны быть больше нуля, задайте другие значения.\n");
+
+		goto error;;
 	}
-	for (i = 0; i < row1; i++) {
+	A = (int**)malloc(row1 * sizeof(int*));		// выделение памяти для массивов
+	B = (int**)malloc(row2 * sizeof(int*));
+	C = (int**)malloc(row1 * sizeof(int*));
+
+	for (i = 0; i < row1; i++) {	// заполнение А матрицы
+		A[i] = (int*)malloc(col1 * sizeof(int));	// выделение памяти для строк
+
+		for (j = 0; j < col1; j++) A[i][j] = rand() % 21 - 10;		
+	}
+
+	for (i = 0; i < row2; i++) {	// заполнение B матрицы
+		B[i] = (int*)malloc(col2 * sizeof(int));	// выделение памяти для строк
+
+		for (j = 0; j < col1; j++) B[i][j] = rand() % 21 - 10;		
+	}
+
+	for (i = 0; i < row1; i++) {	// заполнение C матрицы
+		C[i] = (int*)malloc(col2 * sizeof(int));	// выделение памяти для строк
+
 		for (j = 0; j < col2; j++) {
-			for (k = 0; k < col1; k++) c[i][j] += a[i][k] * b[k][j]; // произведение матриц, заполнение зн. элементов 3-ей матрицы
-		}
-	} 
-	    printf_s("Произведение матриц равно:\n");
 
-	for (i = 0; i < row1; i++) {
-		for (j = 0; j < col2; j++) printf_s("%d\t", c[i][j]);
-		printf_s("\n");
-	}    
-	     return 0;
+			for (k = 0; k < col1; k++) C[i][j] = A[i][k] * B[k][j];		// произведение матриц
+		}
+	}
+	printf("Произведение матриц равно:\n");
+
+	for (i = 0; i < row1; i++) {	// вывод матрицы С
+
+		for (j = 0; j < col2; j++) printf("%5d", C[i][j]);
+		printf("\n");
+	}
+
+	for (i = 0; i < row1; i++) {	// очистка памяти строк 
+		free(A[i]);
+		free(C[i]);
+	}
+	free(A);	// очистка памяти массивов
+	free(B);
+	free(C);
+	getchar();		getchar();
+
+	return 0;
 }
