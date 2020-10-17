@@ -65,7 +65,7 @@ error:
 	free(A);	// очистка памяти массивов
 	free(B);
 	free(C);
-	getchar();		getchar();
+	getchar();	getchar();
 
 	return 0;
 }
