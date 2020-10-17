@@ -30,19 +30,19 @@ error:
 	B = (int**)malloc(row2 * sizeof(int*));
 	C = (int**)malloc(row1 * sizeof(int*));
 
-	for (i = 0; i < row1; i++) {	// заполнение А матрицы
+	for (i = 0; i < row1; i++) {	// заполнение матрицы A
 		A[i] = (int*)malloc(col1 * sizeof(int));	// выделение памяти для строк
 
 		for (j = 0; j < col1; j++) A[i][j] = rand() % 21 - 10;		
 	}
 
-	for (i = 0; i < row2; i++) {	// заполнение B матрицы
+	for (i = 0; i < row2; i++) {	// заполнение матрицы B
 		B[i] = (int*)malloc(col2 * sizeof(int));	// выделение памяти для строк
 
 		for (j = 0; j < col1; j++) B[i][j] = rand() % 21 - 10;		
 	}
 
-	for (i = 0; i < row1; i++) {	// заполнение C матрицы
+	for (i = 0; i < row1; i++) {	// заполнение матрицы С
 		C[i] = (int*)malloc(col2 * sizeof(int));	// выделение памяти для строк
 
 		for (j = 0; j < col2; j++) {
