@@ -15,7 +15,7 @@ error:
     scanf_s("%d%d", &row2, &col2);
 	system("cls");
 
-	if (col1 != row2) {		// проверка возможности умножения
+	if (col1 != row2) {	// проверка возможности умножения
 		printf("Умножение невозможно! Задайте другие значения.\n");
 
 		goto error;
@@ -26,7 +26,7 @@ error:
 
 		goto error;;
 	}
-	A = (int**)malloc(row1 * sizeof(int*));		// выделение памяти для массивов
+	A = (int**)malloc(row1 * sizeof(int*));	// выделение памяти для массивов
 	B = (int**)malloc(row2 * sizeof(int*));
 	C = (int**)malloc(row1 * sizeof(int*));
 
@@ -47,7 +47,7 @@ error:
 
 		for (j = 0; j < col2; j++) {
 
-			for (k = 0; k < col1; k++) C[i][j] = A[i][k] * B[k][j];		// произведение матриц
+			for (k = 0; k < col1; k++) C[i][j] = A[i][k] * B[k][j];	// произведение матриц
 		}
 	}
 	printf("Произведение матриц равно:\n");
