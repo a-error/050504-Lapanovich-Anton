@@ -24,37 +24,37 @@ error:
         A[i] = (int*)malloc(n * sizeof(int));
         B[i] = (int*)malloc(n * sizeof(int));
 
-        for (j = 0; j < n; j++) {    // заполнение матрицы
+        for (j = 0; j < n; j++) {    // заполнение матрицы A
             A[i][j] = k;
             k++;
         }
     }
     printf(" Ваша матрица: \n");
-    for (i = 0; i < n; i++) {    // вывод матрицы 
+    for (i = 0; i < n; i++) {    // вывод матрицы  A
 
         for (j = 0; j < n; j++) printf("%5d ", A[i][j]);
         printf("\n");
     }
 
-    for (i = 0; i < n; i++) {     // транспонирование матрицы
+    for (i = 0; i < n; i++) {     // транспонирование матрицы A
 
         for (j = 0; j < n; j++) B[j][i] = A[i][j];
     }
     printf("\n Транспонированная матрица: \n");
 
-    for (i = 0; i < n; i++) {    // вывод транспонированной матрицы 
+    for (i = 0; i < n; i++) {    // вывод транспонированной матрицы B
 
         for (j = 0; j < n; j++) printf("%5d ", B[i][j]);
         printf("\n");
     }
     printf("\n");
 
-    for (i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) {    // очистка памяти строк
         free(A[i]);
         free(B[i]);
     }
-    free(A);
-    free(B);
+    free(A);    // очистка памяти массива
+    free(B);    
     getchar();    getchar();    // убирает информацию о возвращении 0
 
     return 0;
