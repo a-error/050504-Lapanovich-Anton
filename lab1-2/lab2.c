@@ -9,10 +9,10 @@ int main() {
 	int** A, ** B, ** C;
 	int i, j, k, row1, row2, col1, col2;
 error:
-    printf("Задайте количество строк и столбцов первой матрицы: ");
-    scanf_s("%d%d", &row1, &col1);
-    printf("Задайте количество строк и столбцов второй матрицы: ");
-    scanf_s("%d%d", &row2, &col2);
+	printf("Задайте количество строк и столбцов первой матрицы: ");
+	scanf_s("%d%d", &row1, &col1);
+	printf("Задайте количество строк и столбцов второй матрицы: ");
+	scanf_s("%d%d", &row2, &col2);
 	system("cls");
 
 	if ((row1 <= 0) || (row2 <= 0) || (col1 <= 0) || (col2 <= 0)) {	// проверка допустимых значений размеров матрицы
@@ -33,13 +33,13 @@ error:
 	for (i = 0; i < row1; i++) {	// заполнение матрицы A
 		A[i] = (int*)malloc(col1 * sizeof(int));	// выделение памяти для строк
 
-		for (j = 0; j < col1; j++) A[i][j] = rand() % 21 - 10;		
+		for (j = 0; j < col1; j++) A[i][j] = rand() % 21 - 10;
 	}
 
 	for (i = 0; i < row2; i++) {	// заполнение матрицы B
 		B[i] = (int*)malloc(col2 * sizeof(int));	// выделение памяти для строк
 
-		for (j = 0; j < col1; j++) B[i][j] = rand() % 21 - 10;		
+		for (j = 0; j < col1; j++) B[i][j] = rand() % 21 - 10;
 	}
 
 	for (i = 0; i < row1; i++) {	// заполнение матрицы С
@@ -65,7 +65,7 @@ error:
 	free(A);	// очистка памяти массивов
 	free(B);
 	free(C);
-	getchar();	getchar();
+	getchar();	getchar();	// убирает информацию о возвращении программой 0
 
 	return 0;
 }
