@@ -1,34 +1,53 @@
 #include <stdio.h>
 #include <locale.h>
+#include <malloc.h>
+
 
 int main() {
+
 	setlocale(LC_ALL, "Russian");
-	unsigned int n, i, j, ms[100] = { 0 };
+	int* arr, n, i, j;
 
 	do {
-		printf_s("  Введите количество чисел: ");
+		printf("Задайте количество чисел: ");
 		scanf_s("%d", &n);
-	} while ((n > 100) || (n < 2));    // проверка допустимого значения числа
+		system("cls");
+
+		if (n <= 0) printf("Задаваемое значение должно быть больше нуля.\n");
+	} while (n <= 0);	// проверка на допустимость значения
+	arr = (int*)malloc(n * sizeof(int));	// выделение памяти под хранение элементов
+	printf("Простые числа:\n");
+
+	for (i = 0; i < n; i++) {	// заполнение и вывод массива
+		arr[i] = i;
+
+		if (i % 10 == 0) printf("\n");	// вывод матрицей
+		printf("%5d", arr[i]);
+	}
+	arr[1] = 0;	// замена на простое число
+	printf("\n\nМеньшие n-простые числа:\n");
 
 	for (i = 0; i < n; i++) {
-		ms[i] = ms[i]+i;    // заполнение массивов
-		if (i % 10 == 0) printf_s("\n");    // каждый 10-ый эл. массива переход на новую строку
-		printf_s("%4d", ms[i]);    // вывод значения эл. массива
-	} ms[1] = 0;    // замена 1 на 0, т.к не является простым числом
-	printf_s("\n\n  Меньшие n-простые числа:\n");
 
-	for (i = 0; i < n; i++) {
-		if (ms[i] == 0) continue;
+		if (arr[i] == 0) continue;
 
 		for (j = 0; j < n; j++) {
-			if (ms[j] == 0) continue;
-			else if (j <= i) continue;    
-			else if (ms[j] % ms[i] == 0) ms[j] = 0;    // отбор чисел согласно Решето Эратосфена, заполнение нулями
+
+			if (arr[j] == 0) continue;
+
+			else if (j <= i) continue;
+
+			else if (arr[j] % arr[i] == 0) arr[j] = 0;	// отбор чисел согласно Решето Эратосфена, заполнение нулями
 		}
 	}
-	for (i = 0; i < n; i++) {
-		if (i % 10 == 0) printf_s("\n");    // каждый 10-ый эл. массива переход на новую строку
-		printf_s("%4d", ms[i]);    // вывод значения эл. массива
+
+	for (i = 0; i < n; i++) {	// вывод массива
+
+		if (i % 10 == 0) printf("\n");	// вывод матрицей
+		printf("%5d", arr[i]);
 	}
-	    return 0;
+	free(arr);	// освобождение памяти хранения элементов
+	getchar();	getchar();
+
+	return 0;
 }
