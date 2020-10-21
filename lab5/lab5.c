@@ -8,16 +8,17 @@ int main() {
     setlocale(LC_ALL, "Russian");
     int** A, ** B;
     int i, j, n, k = 0;
-error:
-    printf("Задайте порядок матрицы: ");
-    scanf_s("%d", &n);
-    system("cls");
+    do {
+        printf("Задайте порядок матрицы:");
+        scanf_s("%d", &n);
+        system("cls");
 
-    if (n <= 0) {   // проверка допустимых значений
-        printf("Порядок матрицы должен быть больше нуля. ");
+        if (n <= 0) {   // проверка допустимых значений
+            printf("Порядок матрицы должен быть больше нуля.\n");
 
-        goto error;
-    }
+            continue;
+        }
+    } while (n <= 0);
     A = (int**)malloc(n * sizeof(int*));    // выделение памяти для массивов
     B = (int**)malloc(n * sizeof(int*));
 
