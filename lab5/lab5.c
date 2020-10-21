@@ -9,8 +9,8 @@ int main() {
     int** A, ** B;
     int i, j, n, k = 0;
     do {
-        printf("Задайте порядок матрицы:");
-        scanf_s("%d ", &n);
+        printf("Задайте порядок матрицы: ");
+        scanf_s("%d", &n);
         system("cls");
 
         if (n <= 0) {   // проверка допустимых значений
@@ -26,7 +26,7 @@ int main() {
         A[i] = (int*)malloc(n * sizeof(int));   // выделение памяти под хранение элементов
         B[i] = (int*)malloc(n * sizeof(int));
 
-        for (j = 0; j < n; j++) {   
+        for (j = 0; j < n; j++) {
             A[i][j] = k;
             k++;
         }
@@ -34,7 +34,7 @@ int main() {
     printf("Исходная матрица:\n");
     for (i = 0; i < n; i++) {   // вывод матрицы A
 
-        for (j = 0; j < n; j++) printf("%5d ", A[i][j]);
+        for (j = 0; j < n; j++) printf("%4d", A[i][j]);
         printf("\n");
     }
 
@@ -48,7 +48,7 @@ int main() {
 
     for (i = 0; i < n; i++) {   // вывод матрицы B
 
-        for (j = 0; j < n; j++) printf("%5d ", B[i][j]);
+        for (j = 0; j < n; j++) printf("%4d", B[i][j]);
         printf("\n");
     }
     printf("\n");
