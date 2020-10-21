@@ -10,7 +10,7 @@ int main() {
     int i, j, n, k = 0;
     do {
         printf("Задайте порядок матрицы:");
-        scanf_s("%d", &n);
+        scanf_s("%d ", &n);
         system("cls");
 
         if (n <= 0) {   // проверка допустимых значений
@@ -19,14 +19,14 @@ int main() {
             continue;
         }
     } while (n <= 0);
-    A = (int**)malloc(n * sizeof(int*));    // выделение памяти для массивов
+    A = (int**)malloc(n * sizeof(int*));    // выделение памяти под указатели строк
     B = (int**)malloc(n * sizeof(int*));
 
-    for (i = 0; i < n; i++) {   // выделение памяти для строк
-        A[i] = (int*)malloc(n * sizeof(int));
+    for (i = 0; i < n; i++) {   // заполнение матрицы А
+        A[i] = (int*)malloc(n * sizeof(int));   // выделение памяти под хранение элементов
         B[i] = (int*)malloc(n * sizeof(int));
 
-        for (j = 0; j < n; j++) {   // заполнение матрицы A
+        for (j = 0; j < n; j++) {   
             A[i][j] = k;
             k++;
         }
@@ -40,7 +40,9 @@ int main() {
 
     for (i = 0; i < n; i++) {   // транспонирование матрицы A
 
-        for (j = 0; j < n; j++) B[j][i] = A[i][j];
+        for (j = 0; j < n; j++) {
+            B[j][i] = A[i][j];
+        }
     }
     printf("\nТранспонированная матрица:\n");
 
@@ -51,12 +53,11 @@ int main() {
     }
     printf("\n");
 
-    for (i = 0; i < n; i++) {   // очистка памяти строк
+    for (i = 0; i < n; i++) {   // освобождение памяти указателей строк
         free(A[i]);
         free(B[i]);
     }
-    free(A);    // очистка памяти массива
-    free(B);
+    free(A);    free(B);    // освобождение памяти хранения элементов
     getchar();  getchar();  // убирает информацию о возвращении программой 0
 
     return 0;
