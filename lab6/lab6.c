@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <malloc.h>
 
+
 int main() {
 
 	setlocale(LC_ALL, "Russian");
@@ -71,8 +72,8 @@ int main() {
 		printf("\n");
 	}
 
-	for (i = 0; i < row; i++) {
-		free(A[i]);	// освобождение памяти хранения элементов матрицы
+	for (i = 0; i < row; i++) {	// освобождение памяти хранения элементов матрицы
+		free(A[i]);	
 	}
 	free(A);	free(arr);
 
