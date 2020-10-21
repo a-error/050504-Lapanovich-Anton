@@ -6,59 +6,51 @@
 int main() {
 
     setlocale(LC_ALL, "Russian");
-    int** A, ** B;
-    int i, j, n, k = 0;
+    int** A, ** B, ** C;
+    int i, j, row1, row2, col1, col2;
 
     do {
-        printf("Задайте порядок матрицы: ");
-        scanf_s("%d", &n);
+        printf("Задайте размеры первой матрицы: ");
+        scanf_s("%d%d", &row1, &col1);
+        printf("Задайте размеры второй матрицы: ");
+        scanf_s("%d%d", &row2, &col2);
         system("cls");
 
-        if (n <= 0) {   // проверка допустимых значений
-            printf("Порядок матрицы должен быть больше нуля.\n");
+        if ((row1 <= 0) || (row2 <= 0) || (col1 <= 0) || (col2 <=0)) {   // проверка допустимых значений
+            printf("Вводимые значения должны быть больше нуля.\n");
 
             continue;
         }
-    } while (n <= 0);
-    A = (int**)malloc(n * sizeof(int*));    // выделение памяти под указатели на строки
-    B = (int**)malloc(n * sizeof(int*));
 
-    for (i = 0; i < n; i++) {   // выделение памяти под хранение строк
-        A[i] = (int*)malloc(n * sizeof(int));
-        B[i] = (int*)malloc(n * sizeof(int));
+        if (row2 != col1) {
+            printf("Умножение невозможно! Задайте другие значения.");
 
-        for (j = 0; j < n; j++) {   // заполнение матрицы A
-            A[i][j] = k;
-            k++;
+            continue;
         }
+    } while ((row2 != col1) || (row1 <= 0) || (row2 <= 0) || (col1 <= 0) || (col2 <= 0));
+    A = (int**)malloc(row1 * sizeof(int*));    // выделение памяти под указатели на строки
+    B = (int**)malloc(row2 * sizeof(int*));
+
+    for (i = 0; i < row1; i++) {   // выделение памяти под хранение строк
+        A[i] = (int*)malloc(col1 * sizeof(int));
+        C[i] = (int*)malloc(col2 * sizeof(int));
+
+        for (j = 0; j < row1; j++) A[i][j] = rand() % 21 - 10;  // заполнение матрицы A
     }
-    printf("Исходная матрица:\n");
+    
+    for (i = 0; i < row2; i++) {   // заполнение матрицы B
+        B[i] = (int*)malloc(col2 * sizeof(int));
 
-    for (i = 0; i < n; i++) {   // вывод матрицы A
-
-        for (j = 0; j < n; j++) printf("%5d ", A[i][j]);
-        printf("\n");
+        for (j = 0; j < col2; j++) B[i][j] = rand() % 10 - 0;
     }
 
-    for (i = 0; i < n; i++) {   // транспонирование матрицы A
-
-        for (j = 0; j < n; j++) B[j][i] = A[i][j];
-    }
-    printf("\nТранспонированная матрица:\n");
-
-    for (i = 0; i < n; i++) {   // вывод матрицы B
-
-        for (j = 0; j < n; j++) printf("%5d ", B[i][j]);
-        printf("\n");
-    }
-    printf("\n");
-
-    for (i = 0; i < n; i++) {   // освобождение памяти хранения строк
+    for (i = 0; i < row1; i++) {   // освобождение памяти хранения строк
         free(A[i]);
-        free(B[i]);
+        free(C[i]);
     }
-    free(A);    // освобождение памяти указателей на строки
-    free(B);
+
+    for (i = 0; i < row2; i++) free(B[i]);  // освобождение памяти хранения строк
+    free(A);     free(B);    free(C);   // освобождение памяти указателей на строки
     getchar();  getchar();  // убирает информацию о возвращении программой нуля
 
     return 0;
