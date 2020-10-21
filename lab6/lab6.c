@@ -35,12 +35,12 @@ int main() {
 
 	for (i = 0; i < row1; i++) {
 
-		for (j = 0; j < col1; j++) {	// отбор отрицательных чисел
+		for (j = 0; j < col1; j++) {	// заполнение массива отрицательными числами
 
 			if (A[i][j] >= 0) {
 				continue;
 			}
-			arr[j] = A[i][j];	// заполнение массива отрицательными числами
+			arr[j] = A[i][j];	
 		}
 
 		for (int k = 0; k < col1; k++) {	// сортировка отрицательных чисел
@@ -51,7 +51,7 @@ int main() {
 					continue;
 				}
 
-				do {	
+				do {
 					temp = arr[k];
 					arr[k] = arr[j];
 					arr[j] = temp;
