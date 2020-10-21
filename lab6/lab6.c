@@ -6,7 +6,7 @@
 int main() {
 
 	setlocale(LC_ALL, "Russian");
-	int** A, * arr, temp, i, j, k, row1, col1;
+	int** A, * arr, temp, i, j, row1, col1;
 
 	do {
 		printf("Задайте размеры матрицы: ");
@@ -27,7 +27,7 @@ int main() {
 		A[i] = (int*)malloc(col1 * sizeof(int));	// выделение памяти под хранение элементов матрицы
 
 		for (j = 0; j < col1; j++) {
-			A[i][j] = rand() % 21 - 10;	// числа от -10 до 10
+			A[i][j] = rand() % 6 - 5;	// числа от -5 до 0
 			printf("%4d", A[i][j]);
 		}
 		printf("\n");
@@ -40,17 +40,18 @@ int main() {
 			if (A[i][j] >= 0) {
 				continue;
 			}
-			arr[j] = A[i][j];
+			arr[j] = A[i][j];	// заполнение массива отрицательными числами
 		}
 
-		for (int k = 0; k < col1; k++) {
+		for (int k = 0; k < col1; k++) {	// сортировка отрицательных чисел
 
 			for (j = 0; j < col1; j++) {
 
 				if (arr[j] >= 0) {
 					continue;
 				}
-				do {
+
+				do {	
 					temp = arr[k];
 					arr[k] = arr[j];
 					arr[j] = temp;
@@ -58,7 +59,7 @@ int main() {
 			}
 		}
 
-		for (j = 0; j < col1; j++) {	// отбор отрицательных чисел
+		for (j = 0; j < col1; j++) {	// заполнение строки после сортировки
 
 			if (A[i][j] >= 0) {
 				continue;
@@ -66,13 +67,13 @@ int main() {
 			A[i][j] = arr[j];
 		}
 
-		for (j = 0; j < col1; j++) {
+		for (j = 0; j < col1; j++) {	// обнуление массива
 			arr[j] = 0;
 		}
 	}
 	printf("\nПолученная матрица:\n");
 
-	for (i = 0; i < row1; i++) {
+	for (i = 0; i < row1; i++) {	// вывод матрицы
 
 		for (j = 0; j < col1; j++) {
 			printf("%4d", A[i][j]);
@@ -83,5 +84,5 @@ int main() {
 	for (i = 0; i < row1; i++) free(A[i]);	// освобождение памяти хранения элементов матрицы
 	free(A);	free(arr);
 
-    return 0;
+	return 0;
 }
