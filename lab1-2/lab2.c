@@ -17,7 +17,7 @@ int main() {
         system("cls");
 
         if ((row1 <= 0) || (row2 <= 0) || (col1 <= 0) || (col2 <= 0)) {   // проверка допустимых значений
-            printf("Вводимые значения должны быть больше нуля.\n");
+            printf("Задаваемые значения должны быть больше нуля.\n");
 
             continue;
         }
@@ -36,7 +36,7 @@ int main() {
         A[i] = (int*)malloc(col1 * sizeof(int));
         C[i] = (int*)malloc(col2 * sizeof(int));
 
-        for (j = 0; j < row1; j++) A[i][j] = rand() % 21 - 10;  // заполнение матрицы A
+        for (j = 0; j < col1; j++) A[i][j] = rand() % 21 - 10;  // заполнение матрицы A
     }
 
     for (i = 0; i < row2; i++) {   // заполнение матрицы B
@@ -46,18 +46,19 @@ int main() {
     }
 
     for (i = 0; i < row1; i++) {    // заполнение матрицы С
-        
+
         for (j = 0; j < col2; j++) {
 
             for (k = 0; k < col1; k++) {    // умножение матриц
                 C[i][j] = A[i][k] * B[k][j];
             }
-        }     
+        }
     }
+    printf("Полученная матрица:\n");
 
     for (i = 0; i < row1; i++) {    // вывод матрицы С
 
-        for (j = 0; j < col2; j++) printf("%d ", C[i][j]);
+        for (j = 0; j < col2; j++) printf("%4d ", C[i][j]);
         printf("\n");
     }
 
