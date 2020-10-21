@@ -22,7 +22,7 @@ int main() {
             continue;
         }
 
-        if (row2 != col1) {
+        if (row2 != col1) { // проверка на возможность умножения
             printf("Умножение невозможно! Задайте другие значения.\n");
 
             continue;
@@ -32,11 +32,11 @@ int main() {
     B = (int**)malloc(row2 * sizeof(int*));
     C = (int**)malloc(row1 * sizeof(int*));
 
-    for (i = 0; i < row1; i++) {   // выделение памяти под хранение строк
-        A[i] = (int*)malloc(col1 * sizeof(int));
+    for (i = 0; i < row1; i++) {   // заполнение матрицы A
+        A[i] = (int*)malloc(col1 * sizeof(int));    // выделение памяти под хранение строк
         C[i] = (int*)malloc(col2 * sizeof(int));
 
-        for (j = 0; j < col1; j++) A[i][j] = rand() % 21 - 10;  // заполнение матрицы A
+        for (j = 0; j < col1; j++) A[i][j] = rand() % 21 - 10;  
     }
 
     for (i = 0; i < row2; i++) {   // заполнение матрицы B
@@ -49,9 +49,7 @@ int main() {
 
         for (j = 0; j < col2; j++) {
 
-            for (k = 0; k < col1; k++) {    // умножение матриц
-                C[i][j] = A[i][k] * B[k][j];
-            }
+            for (k = 0; k < col1; k++) C[i][j] = A[i][k] * B[k][j]; // умножение матриц
         }
     }
     printf("Полученная матрица:\n");
