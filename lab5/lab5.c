@@ -10,7 +10,7 @@ int main() {
         printf("Задайте порядок матрицы: ");
         scanf_s("%d", &n);
         system("cls");
-        if (n <= 0) {   
+        if (n <= 0) {
             printf("Порядок матрицы должен быть больше нуля.\n");
             continue;
         }
@@ -29,7 +29,9 @@ int main() {
     printf("Исходная матрица:\n");
 
     for (i = 0; i < n; i++) {   // вывод матрицы A
-        for (j = 0; j < n; j++) printf("%4d", A[i][j]);
+        for (j = 0; j < n; j++) {
+            printf("%4d", A[i][j]);
+        }
         printf("\n");
     }
 
@@ -41,7 +43,9 @@ int main() {
     printf("\nТранспонированная матрица:\n");
 
     for (i = 0; i < n; i++) {   // вывод матрицы B
-        for (j = 0; j < n; j++) printf("%4d", B[i][j]);
+        for (j = 0; j < n; j++) {
+            printf("%4d", B[i][j]);
+        }
         printf("\n");
     }
     printf("\n");
