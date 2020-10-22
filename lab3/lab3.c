@@ -11,7 +11,7 @@ int main() {
 		printf("Задайте количество натуральных чисел: ");
 		scanf_s("%d", &n);
 		system("cls");
-		if (n <= 0) {	
+		if (n <= 0) {
 			printf("Задаваемое значение должно быть больше нуля.\n");
 			continue;
 		}
@@ -22,7 +22,9 @@ int main() {
 	for (i = 0; i < n; i++) {	// заполнение и вывод массива
 		arr[i] = rand() % 21 - 10;
 		printf("%3d ", arr[i]);
-		if ((i + 1) % 10 == 0) printf_s("\n");
+		if ((i + 1) % 10 == 0) {
+			printf_s("\n");
+		}
 	}
 
 	for (i = 0; i < n; i++) {
