@@ -10,7 +10,7 @@ int main() {
 		printf("Задайте размеры матрицы: ");
 		scanf_s("%d%d", &row, &col);
 		system("cls");
-		if ((row <= 0) || (col <= 0)) {	
+		if ((row <= 0) || (col <= 0)) {
 			printf("Задаваемые значения должны быть больше нуля.\n");
 			continue;
 		}
