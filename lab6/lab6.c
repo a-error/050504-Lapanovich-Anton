@@ -2,9 +2,7 @@
 #include <locale.h>
 #include <malloc.h>
 
-
 int main() {
-
 	setlocale(LC_ALL, "Russian");
 	int** A, * arr, temp, i, j, row, col;
 
@@ -32,14 +30,14 @@ int main() {
 
 	for (i = 0; i < row; i++) {
 
-		for (j = 0; j < col; j++) {	// заполнение массива отрицательными числами
+		for (j = 0; j < col; j++) {	// перенос в массив отрицательных чисел
 			if (A[i][j] >= 0) {
 				continue;
 			}
 			arr[j] = A[i][j];
 		}
 
-		for (int k = 0; k < col; k++) {	// сортировка отрицательных чисел
+		for (int k = 0; k < col; k++) {	// сортировка отрицательных чисел по возрастанию
 			for (j = 0; j < col; j++) {
 				if (arr[j] >= 0) {
 					continue;
@@ -52,15 +50,12 @@ int main() {
 			}
 		}
 
-		for (j = 0; j < col; j++) {	// заполнение строки после сортировки
+		for (j = 0; j < col; j++) {	// возврат отрицательных чисел в строку после сортировки
 			if (A[i][j] >= 0) {
 				continue;
 			}
 			A[i][j] = arr[j];
-		}
-
-		for (j = 0; j < col; j++) {	// обнуление массива
-			arr[j] = 0;
+			arr[j] = 0;	// обнуление массива
 		}
 	}
 	printf("\nПолученная матрица:\n");
@@ -73,7 +68,7 @@ int main() {
 	}
 
 	for (i = 0; i < row; i++) {	// освобождение памяти хранения элементов матрицы
-		free(A[i]);	
+		free(A[i]);
 	}
 	free(A);	free(arr);
 
