@@ -24,12 +24,12 @@ int main()
 			temp = 0;
 			continue;
 		}
-		else if (i == n - 1)
+		else if (i == n - 1)	// проверка на окончание строки
 		{
 			arr[i] = temp;
 			continue;
 		}
-		else if (s[i] == '\0')	// проверка на произвольный конец строки
+		else if (s[i] == '\0')	// проверка на произвольное окончание строки
 		{
 			arr[i] = temp - 1;
 			temp--;
@@ -46,7 +46,7 @@ int main()
 		}
 		else temp = arr[i];
 	}
-	printf("Длина самого короткого слова: %d", temp);
+	printf("Длина самого короткого слова равна %d", temp);
 	free(s);	free(arr);	// освобождение памяти
 
 	return 0;
