@@ -9,6 +9,7 @@ int main()
 	int* arr, i, n, temp = 0;
 	printf("Задайте размер строки: ");
 	scanf_s("%d", &n);
+	n++;
 	s = (char*)malloc(n * sizeof(char));	// выделение памяти под хранение элементов строки
 	arr = (int*)calloc(n, sizeof(int));	// выделение памяти под храниние элементов массива
 	printf("Задайте строку: ");
@@ -23,15 +24,20 @@ int main()
 			temp = 0;
 			continue;
 		}
-		else if (s[i] == '\0')	// проверка на конец строки
+		else if (i == n - 1)
 		{
-			arr[i] = temp-1;
+			arr[i] = temp;
+			continue;
+		}
+		else if (s[i] == '\0')	// проверка на произвольный конец строки
+		{
+			arr[i] = temp - 1;
 			temp--;
 			continue;
-	    }
+		}
 		temp++;
 	}
-	
+
 	for (i = 0; i < n; i++)	// поиск наименьшей длины слова
 	{
 		if ((arr[i] == 0) || (temp < arr[i]))
