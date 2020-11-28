@@ -1,4 +1,4 @@
-/* Varient 1
+/* Variant 1
 */
 
 #include <stdio.h>
