@@ -1,28 +1,32 @@
+/* Variant 13
+*/
+
 #include <stdio.h>
-#include <locale.h>
-#include <malloc.h>
 
 int main() {
-	setlocale(LC_ALL, "Russian");
+	
 	int** A, * arr, temp, i, j, row, col;
 
 	do {
 		printf("Задайте размеры матрицы: ");
-		scanf_s("%d%d", &row, &col);
-		system("cls");
-		if ((row <= 0) || (col <= 0)) {
+		scanf("%d%d", &row, &col);
+		system("clear");
+		if ((row <= 0) 
+		|| (col <= 0)) {
 			printf("Задаваемые значения должны быть больше нуля.\n");
 			continue;
 		}
-	} while ((row <= 0) || (col <= 0)); // проверка на допустимость задаваемых значений
-	A = (int**)malloc(row * sizeof(int*));	// выделение памяти под указатели на строки матрицы
-	arr = (int*)calloc(row, sizeof(int));	// выделение памяти под хранение элементов массива
-	printf("Заданная матрица:\n");
+	} while ((row <= 0) 
+	|| (col <= 0)); 
 
-	for (i = 0; i < row; i++) {	// заполнение и вывод матрицы
-		A[i] = (int*)malloc(col * sizeof(int));	// выделение памяти под хранение элементов матрицы
+	A = (int**)malloc(row * sizeof(int*));
+	arr = (int*)calloc(row, sizeof(int));	
+	
+	printf("Заданная матрица:\n");
+	for (i = 0; i < row; i++) {	
+		A[i] = (int*)malloc(col * sizeof(int));	
 		for (j = 0; j < col; j++) {
-			A[i][j] = rand() % 6 - 5;	// числа от -5 до 0
+			A[i][j] = rand() % 6 - 5;	
 			printf("%4d", A[i][j]);
 		}
 		printf("\n");
@@ -30,14 +34,14 @@ int main() {
 
 	for (i = 0; i < row; i++) {
 
-		for (j = 0; j < col; j++) {	// перенос в массив отрицательных чисел
+		for (j = 0; j < col; j++) {	
 			if (A[i][j] >= 0) {
 				continue;
 			}
 			arr[j] = A[i][j];
 		}
 
-		for (int k = 0; k < col; k++) {	// сортировка отрицательных чисел по возрастанию
+		for (int k = 0; k < col; k++) {	
 			for (j = 0; j < col; j++) {
 				if (arr[j] >= 0) {
 					continue;
@@ -50,24 +54,24 @@ int main() {
 			}
 		}
 
-		for (j = 0; j < col; j++) {	// возврат отрицательных чисел в строку после сортировки
+		for (j = 0; j < col; j++) {	
 			if (A[i][j] >= 0) {
 				continue;
 			}
 			A[i][j] = arr[j];
-			arr[j] = 0;	// обнуление массива
+			arr[j] = 0;	
 		}
 	}
-	printf("\nПолученная матрица:\n");
 
-	for (i = 0; i < row; i++) {	// вывод матрицы
+	printf("\nПолученная матрица:\n");
+	for (i = 0; i < row; i++) {	
 		for (j = 0; j < col; j++) {
 			printf("%4d", A[i][j]);
 		}
 		printf("\n");
 	}
 
-	for (i = 0; i < row; i++) {	// освобождение памяти хранения элементов матрицы
+	for (i = 0; i < row; i++) {	
 		free(A[i]);
 	}
 	free(A);	free(arr);
