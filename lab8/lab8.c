@@ -16,7 +16,9 @@ int main() {
         if(k == 1) getchar();
 		fgets(str[i], m, stdin);
 	}
+
     i = 0;
+    
 	while(i < n) {
 		for (j = 0; j < m; j++) {
 			for (k = 0; k < m; k++) {
