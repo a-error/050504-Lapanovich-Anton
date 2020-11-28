@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
     
     int** A, ** B, ** C;
     int i, j, k, row1, row2, col1, col2;
