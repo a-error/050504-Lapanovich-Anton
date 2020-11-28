@@ -28,6 +28,7 @@ int main(void) {
     || (row2 <= 0) 
     || (col1 <= 0) 
     || (col2 <= 0));
+    
     A = (int**)malloc(row1 * sizeof(int*));  
     B = (int**)malloc(row2 * sizeof(int*));
     C = (int**)malloc(row1 * sizeof(int*));
