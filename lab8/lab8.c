@@ -1,32 +1,26 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main()
-{
-	system("chcp 1251");
-	system("cls");
+int main() {
+
 	char** str;
 	int i, j, n, m, temp, k = 0;
 	printf("Задайте количество и длину строк: ");
-	scanf_s("%d%d", &n, &m);
+	scanf("%d%d", &n, &m);
 	m++;
-	str = (char**)malloc(n * sizeof(char*));	// выделение памяти под укзатели на строки
+	str = (char**)malloc(n * sizeof(char*));
 
-	for (i = 0; i < n; i++)	// заполнение строк
-	{
+	for (i = 0; i < n; i++)	{
 		k++;
-		str[i] = (char*)malloc(m * sizeof(char));	// выделение памяти под хранение элементов
+		str[i] = (char*)malloc(m * sizeof(char));	
 		printf("Задайте %d строку: ", k);
-		getchar();
+        if(k == 1) getchar();
 		fgets(str[i], m, stdin);
 	}
+    i = 0;
+	while(i < n) {
+		for (j = 0; j < m; j++) {
+			for (k = 0; k < m; k++) {
 
-	for (i = 0; i < n; i++)	// сортировка цифр по убыванию
-	{
-		for (j = 0; j < m; j++)
-		{
-			for (k = 0; k < m; k++)
-			{
 				while (str[i][j] > str[i][k])
 				{
 					temp = str[i][j];
@@ -35,13 +29,14 @@ int main()
 				}
 			}
 		}
+        i++;
 	}
 	printf("Результат сортировки:\n");
 
-	for (i = 0; i < n; i++)	// вывод строк после сортировки
+	for (i = 0; i < n; i++)	
 	{
-		printf("%s\n", str[i]);
-		free(str[i]);	// освобождение памяти указателей на строки
+		fputs(str[i], stdout);
+		free(str[i]);
 	}
 	free(str);
 	
