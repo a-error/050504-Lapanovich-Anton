@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-int main() {
+int main(void) {
    
     int** A, ** B, i, j, n, k = 0;
 
