@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 
-int main() {
+int main(void) {
 
 	char* s;
 	int* arr, i, n, temp = 0;
