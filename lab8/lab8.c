@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-int main() {
+int main(void) {
 
 	char** str;
 	int i, j, n, m, temp, k = 0;
