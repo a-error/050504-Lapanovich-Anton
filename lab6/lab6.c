@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-int main() {
+int main(void) {
 	
 	int** A, * arr, temp, i, j, row, col;
 
