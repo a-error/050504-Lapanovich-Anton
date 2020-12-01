@@ -9,7 +9,7 @@ int main(void) {
 
     int* array; 
     array = (int*)malloc(SIZE * sizeof(int));
-    
+
     setArrayValue(array, SIZE);
     printf("Среднеарифметического этих чисел =  %.1f", 
         showAverageValue(array, SIZE));
@@ -20,7 +20,6 @@ int main(void) {
 void setArrayValue(int* array, int size) {
 
     printf("Задайте значения элементов массива: ");
-
     for (int i = 0; i < SIZE; i++) {
         scanf("%d", &*(array+ i));
     }
