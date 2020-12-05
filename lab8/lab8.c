@@ -5,36 +5,41 @@
 
 int main(void) {
 
-	char** str;
+	char** array;
 	int amount, length, temp, number = 0;
 
 	printf("Задайте количество и длину строк: ");
 	scanf("%d%d", &amount, &length);
 	length++;
 
-	str = (char**)malloc(amount * sizeof(char*));
+	array = (char**)malloc(amount * sizeof(char*));
 
 	for (int i = 0; i < amount; i++)    {
 
 		number++;
-		str[i] = (char*)malloc(length * sizeof(char));
+		array[i] = (char*)malloc(length * sizeof(char));
 
 		printf("Задайте %d строку: ", number);
 		getchar();
-		fgets(str[i], length, stdin);
+		fgets(array[i], length, stdin);
 	}
 
+	printf("test:\n");
+	for (int i  = 0; i < amount; i++) {
+		
+		fputs(array[i], stdout);
+	}
 	for (int i = 0; i < amount; i++) {
 
 		for (int j = 0; j < length; j++) {
 
 			number = 0;
 
-				while (str[i][j] > str[i][number]) {
+				while (array[i][j] > array[i][number]) {
 
-					temp = str[i][j];
-					str[i][j] = str[i][number];
-					str[i][number] = temp;
+					temp = array[i][j];
+					array[i][j] = array[i][number];
+					array[i][number] = temp;
 					number++;
 				}
 				number = 0;
@@ -44,11 +49,10 @@ int main(void) {
 	printf("Результат сортировки:\n");
 	for (int i  = 0; i < amount; i++) {
 		
-		fputs(str[i], stdout);
-		if (str[i][length - 1 != ' ']) printf("\n");
-		free(str[i]);
+		fputs(array[i], stdout);
+		free(array[i]);
 	}
-	free(str);
+	free(array);
 	
 	return 0;
 }
