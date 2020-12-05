@@ -10,8 +10,8 @@ int main(void) {
 
 	printf("Задайте количество и длину строк: ");
 	scanf("%d%d", &amount, &length);
+	length += 1;
 	getchar();
-	length += 2;
 
 	str = (char**)malloc(amount * sizeof(char*));
 
