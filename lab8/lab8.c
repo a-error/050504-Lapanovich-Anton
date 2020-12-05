@@ -10,8 +10,7 @@ int main(void) {
 
 	printf("Задайте количество и длину строк: ");
 	scanf("%d%d", &amount, &length);
-	length += 1;
-	getchar();
+	length++;
 
 	str = (char**)malloc(amount * sizeof(char*));
 
@@ -21,6 +20,7 @@ int main(void) {
 		str[i] = (char*)malloc(length * sizeof(char));
 
 		printf("Задайте %d строку: ", number);
+		getchar();
 		fgets(str[i], length, stdin);
 	}
 
@@ -43,8 +43,9 @@ int main(void) {
 
 	printf("Результат сортировки:\n");
 	for (int i  = 0; i < amount; i++) {
-
+		
 		fputs(str[i], stdout);
+		if (str[i][length - 1 != ' ']) printf("\n");
 		free(str[i]);
 	}
 	free(str);
