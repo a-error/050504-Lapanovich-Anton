@@ -6,31 +6,35 @@
 int main(void) {
 
 	char** str;
-	int i, j, n, m, temp, k = 0;
+	int amount, length, temp, number = 0;
 
 	printf("Задайте количество и длину строк: ");
-	scanf("%d%d", &n, &m);
-	m++;
-	str = (char**)malloc(n * sizeof(char*));
+	scanf("%d%d", &amount, &length);
+	length++;
 
-	for (i = 0; i < n; i++)	{
-		k++;
-		str[i] = (char*)malloc(m * sizeof(char));	
-		printf("Задайте %d строку: ", k);
-        if(k == 1) getchar();
-		fgets(str[i], m, stdin);
+	str = (char**)malloc(amount * sizeof(char*));
+
+	for (int i = 0; i < amount; i++)    {
+
+		number++;
+		str[i] = (char*)malloc(length * sizeof(char));
+
+		printf("Задайте %d строку: ", number);
+        if(number == 1) getchar();
+		fgets(str[i], length, stdin);
 	}
 
-    i = 0;
+	for (int i = 0; i < amount; i++) {
 
-	while(i < n) {
-		for (j = 0; j < m; j++) {
-			for (k = 0; k < m; k++) {
-				while (str[i][j] > str[i][k])
-				{
+		for (int j = 0; j < length; j++) {
+
+			for (number = 0; number < length; number++) {
+
+				while (str[i][j] > str[i][number]) {
+
 					temp = str[i][j];
-					str[i][j] = str[i][k];
-					str[i][k] = temp;
+					str[i][j] = str[i][number];
+					str[i][number] = temp;
 				}
 			}
 		}
@@ -38,8 +42,8 @@ int main(void) {
 	}
 
 	printf("Результат сортировки:\n");
-	for (i = 0; i < n; i++)	
-	{
+	for (int i  = 0; i < amount; i++) {
+
 		fputs(str[i], stdout);
 		free(str[i]);
 	}
