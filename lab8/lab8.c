@@ -14,7 +14,6 @@ int main(void) {
 	
 	getchar();
 	array = (char**)malloc(amount * sizeof(char*));
-
 	for (int i = 0; i < amount; i++)    {
 
 		number++;
@@ -23,13 +22,10 @@ int main(void) {
 		printf("Задайте %d строку: ", number);
 		fgets(*(array + i), length, stdin);
 	}
-
 	for (int i = 0; i < amount; i++) {
-
 		for (int j = 0; j < length; j++) {
 
 			number = 0;
-
 				while (*(*(array + i) + j) > *(*(array + i) + number)) {
 
 					temp = *(*(array + i) + j);
