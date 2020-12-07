@@ -10,9 +10,8 @@ int main(void) {
 
 	printf("Задайте количество и длину строк: ");
 	scanf("%d%d", &amount, &length);
-	length++;
-	
-	
+	length += 2;
+	getchar();
 	array = (char**)malloc(amount * sizeof(char*));
 
 	for (int i = 0; i < amount; i++)    {
@@ -21,7 +20,6 @@ int main(void) {
 		*(array + i) = (char*)malloc(length * sizeof(char));
 
 		printf("Задайте %d строку: ", number);
-        getchar();
 		fgets(*(array + i), length, stdin);
 	}
 
