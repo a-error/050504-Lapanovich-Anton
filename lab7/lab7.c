@@ -30,14 +30,12 @@ int main(void) {
 
 			continue;
 		}
-        
 		if (i == length - 1)	{
 
 			*(array + i) = temp;
 
 			break;
 		}
-
 		if (*(string + i) == '\0') {
 
 			temp--;
