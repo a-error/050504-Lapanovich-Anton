@@ -18,7 +18,6 @@ int main(void) {
     
     return 0;
 }
-
 void setArrayValue(int* array, int size) {
     
     printf("Задайте значения элементов массива: ");
@@ -26,7 +25,6 @@ void setArrayValue(int* array, int size) {
         scanf("%d", &*(array + i));
     }
 }
-
 float showAverageValue(int* array, int size) {
     
     float AverageValue = 0;
