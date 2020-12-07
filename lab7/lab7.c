@@ -56,7 +56,7 @@ int main(void) {
 
 	printf("Длина самого короткого слова равна %d", temp);
 	free(string);	
-    free(array);	
+        free(array);	
 
 	return 0;
 }
