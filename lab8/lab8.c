@@ -11,6 +11,7 @@ int main(void) {
 	printf("Задайте количество и длину строк: ");
 	scanf("%d%d", &amount, &length);
 	length += 2;
+	
 	getchar();
 	array = (char**)malloc(amount * sizeof(char*));
 
