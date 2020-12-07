@@ -22,6 +22,7 @@ int main(void) {
 		printf("Задайте %d строку: ", number);
 		fgets(*(array + i), length, stdin);
 	}
+	
 	for (int i = 0; i < amount; i++) {
 		for (int j = 0; j < length; j++) {
 
