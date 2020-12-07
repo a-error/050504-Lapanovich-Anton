@@ -17,41 +17,40 @@ int main(void) {
 
 	printf("Задайте строку: ");
 	getchar();
+
 	fgets(string, length, stdin);
 	for (i = 0; i < length; i++)	{
-
 		if (*(string + i) == ' ') {
-
 			if (i == length - 2)	{
+
 				continue;
 			}
-
 			*(array + i) = temp;
 			temp = 0;
+
 			continue;
 		}
-
 		if (i == length - 1)	{
+
 			*(array + i) = temp;
+
 			break;
 		}
-
 		if (*(string + i) == '\0') {
+
 			temp--;
 			*(array + i) = temp;
+
 			break;
 		}
-
 		temp++;
 	}
 
 	for (i = 0; i < length; i++)	{
-
 		if ((*(array + i) == 0) || (temp < *(array + i))) {
 
 			continue;
 		}
-
 		else temp = *(array + i);
 	}
 
