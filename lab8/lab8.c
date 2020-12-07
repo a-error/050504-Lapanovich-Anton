@@ -43,6 +43,7 @@ int main(void) {
 		fputs(*(array + i), stdout);
 		free(*(array + i));
 	}
+    
 	free(array);
 	
 	return 0;
