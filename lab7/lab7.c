@@ -3,57 +3,61 @@
 
 #include <stdio.h>
 
-
 int main(void) {
 
-	char* s;
-	int* arr, i, n, temp = 0;
+	char* string;
+	int* array, i, length, temp = 0;
 
-	printf("Задайте размер строки: ");
-	scanf("%d", &n);
-	n++;
+	printf("Задайте длину строки: ");
+	scanf("%d", &length);
+	length++;
 
-	s = (char*)malloc(n * sizeof(char));	
-	arr = (int*)calloc(n, sizeof(int));	
+	string = (char*)malloc(length * sizeof(char));	
+	array = (int*)calloc(length, sizeof(int));	
 
 	printf("Задайте строку: ");
 	getchar();
-	fgets(s, n, stdin);
+	fgets(string, length, stdin);
+	for (i = 0; i < length; i++)	{
 
-	for (i = 0; i < n; i++)	{
+		if (*(string + i) == ' ') {
 
-		if (s[i] == ' ') {
-			if (i == n - 2)	{
+			if (i == length - 2)	{
 				continue;
 			}
-			arr[i] = temp;
+
+			*(array + i) = temp;
 			temp = 0;
 			continue;
 		}
 
-		if (i == n - 1)	{
-			arr[i] = temp;
+		if (i == length - 1)	{
+			*(array + i) = temp;
 			break;
 		}
 
-		if (s[i] == '\0') {
+		if (*(string + i) == '\0') {
 			temp--;
-			arr[i] = temp;
+			*(array + i) = temp;
 			break;
 		}
+
 		temp++;
 	}
 
-	for (i = 0; i < n; i++)	{
-		if ((arr[i] == 0) 
-		|| (temp < arr[i])) {
+	for (i = 0; i < length; i++)	{
+
+		if ((*(array + i) == 0) || (temp < *(array + i))) {
+
 			continue;
 		}
-		else temp = arr[i];
+
+		else temp = *(array + i);
 	}
 
 	printf("Длина самого короткого слова равна %d", temp);
-	free(s);	free(arr);	
+	free(string);	
+    free(array);	
 
 	return 0;
 }
