@@ -27,14 +27,13 @@ int main(void) {
 		for (int j = 0; j < length; j++) {
 
 			number = 0;
-				while (*(*(array + i) + j) > *(*(array + i) + number)) {
+			while (*(*(array + i) + j) > *(*(array + i) + number)) {
 
-					temp = *(*(array + i) + j);
-					*(*(array + i) + j) = *(*(array + i) + number);
-					*(*(array + i) + number) = temp;
-					number++;
-				}
-				number = 0;
+				temp = *(*(array + i) + j);
+				*(*(array + i) + j) = *(*(array + i) + number);
+				*(*(array + i) + number) = temp;
+				number++;
+			}
 		}
 	}
 
