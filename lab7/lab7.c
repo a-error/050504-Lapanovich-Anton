@@ -6,7 +6,7 @@
 int main(void) {
 
 	char* string;
-	int* array, i, length, temp = 0;
+	int* array, length, temp = 0;
 
 	printf("Задайте длину строки: ");
 	scanf("%d", &length);
@@ -19,7 +19,7 @@ int main(void) {
 	getchar();
 
 	fgets(string, length, stdin);
-	for (i = 0; i < length; i++)	{
+	for (int i = 0; i < length; i++)	{
 		if (*(string + i) == ' ') {
 			if (i == length - 2)	{
 
@@ -30,12 +30,14 @@ int main(void) {
 
 			continue;
 		}
+        
 		if (i == length - 1)	{
 
 			*(array + i) = temp;
 
 			break;
 		}
+
 		if (*(string + i) == '\0') {
 
 			temp--;
@@ -46,7 +48,7 @@ int main(void) {
 		temp++;
 	}
 
-	for (i = 0; i < length; i++)	{
+	for (int i = 0; i < length; i++)	{
 		if ((*(array + i) == 0) || (temp < *(array + i))) {
 
 			continue;
@@ -56,7 +58,7 @@ int main(void) {
 
 	printf("Длина самого короткого слова равна %d", temp);
 	free(string);	
-        free(array);	
+    free(array);	
 
 	return 0;
 }
