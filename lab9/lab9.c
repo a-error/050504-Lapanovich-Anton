@@ -7,6 +7,7 @@
 
 void setArrayValue(int* array, int size);
 float showAverageValue(int* array, int size);
+
 int main(void) {
     int array[SIZE];
     setArrayValue(array, SIZE);
