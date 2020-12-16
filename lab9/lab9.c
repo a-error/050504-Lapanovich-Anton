@@ -1,13 +1,9 @@
 /* Variant 1
 */
-
 #define SIZE 10
-
 #include <stdio.h>
-
 void setArrayValue(int* array, int size);
 float showAverageValue(int* array, int size);
-
 int main(void) {
     int array[SIZE];
     setArrayValue(array, SIZE);
