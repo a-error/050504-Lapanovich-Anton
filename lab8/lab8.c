@@ -1,8 +1,6 @@
 /* Variant 4
 */
-
 #include <stdio.h>
-
 int main(void) {
 	char** array;
 	int amount, length, temp, number = 0;
