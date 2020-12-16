@@ -1,10 +1,7 @@
 /* Variant 3
 */
-
 #include <stdio.h>
-
 int main(void) {
-
 	char* string;
 	int* array, length, temp = 0;
 	printf("Задайте длину строки: ");
