@@ -4,7 +4,6 @@
 int divider(int a, int b, int counter);
 int main(void) {
     int a, b, counter;
-    counter = a;
     printf("Задайте два числа: ");
     scanf("%d%d", &a, &b);
     printf("Наибольший общий делитель = %d", divider(a, b, counter));
