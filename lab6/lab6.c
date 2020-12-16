@@ -1,12 +1,8 @@
 /* Variant 13
 */
-
 #include <stdio.h>
-
 int main(void) {
-	
 	int** A, * arr, temp, i, j, row, col;
-
 	do {
 		printf("Задайте размеры матрицы: ");
 		scanf("%d%d", &row, &col);
@@ -18,7 +14,6 @@ int main(void) {
 		}
 	} while ((row <= 0) 
 	|| (col <= 0)); 
-
 	A = (int**)malloc(row * sizeof(int*));
 	arr = (int*)calloc(row, sizeof(int));	
 	
@@ -31,16 +26,13 @@ int main(void) {
 		}
 		printf("\n");
 	}
-
 	for (i = 0; i < row; i++) {
-
 		for (j = 0; j < col; j++) {	
 			if (A[i][j] >= 0) {
 				continue;
 			}
 			arr[j] = A[i][j];
 		}
-
 		for (int k = 0; k < col; k++) {	
 			for (j = 0; j < col; j++) {
 				if (arr[j] >= 0) {
@@ -53,7 +45,6 @@ int main(void) {
 				} while (arr[k] < arr[j]);
 			}
 		}
-
 		for (j = 0; j < col; j++) {	
 			if (A[i][j] >= 0) {
 				continue;
@@ -62,7 +53,6 @@ int main(void) {
 			arr[j] = 0;	
 		}
 	}
-
 	printf("\nПолученная матрица:\n");
 	for (i = 0; i < row; i++) {	
 		for (j = 0; j < col; j++) {
@@ -70,11 +60,9 @@ int main(void) {
 		}
 		printf("\n");
 	}
-
 	for (i = 0; i < row; i++) {	
 		free(A[i]);
 	}
 	free(A);	free(arr);
-
 	return 0;
 }
