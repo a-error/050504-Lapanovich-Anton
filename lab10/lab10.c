@@ -15,7 +15,6 @@ int divider(int a, int b, int counter) {
     return counter;
     }
     else {
-    counter--;
-    divider(a, b, counter);
+    divider(a, b, --counter);
     }
 }
